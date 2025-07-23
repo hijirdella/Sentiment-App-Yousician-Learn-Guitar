@@ -1,4 +1,3 @@
-# Adjusted for Ukulele by Yousician
 import streamlit as st
 import joblib
 import pandas as pd
@@ -9,14 +8,14 @@ import numpy as np
 from scipy import sparse
 
 # === Load model dan komponen ===
-model = joblib.load('Ridge_Classifier_Original_model_Ukulele_by_Yousician.pkl')
-vectorizer = joblib.load('tfidf_vectorizer_Ukulele_by_Yousician.pkl')
-label_encoder = joblib.load('label_encoder_Ukulele_by_Yousician.pkl')
+model = joblib.load('Logistic_Regression_Original_model_Yousician_Learn_Guitar.pkl')
+vectorizer = joblib.load('tfidf_vectorizer_Yousician_Learn_Guitar.pkl')
+label_encoder = joblib.load('label_encoder_Yousician_Learn_Guitar.pkl')
 
 # === Complaint keywords ===
 complaint_keywords = [
     'ads', 'ad', 'too many ads', 'too much ads', 'advertisement', 'popup ad', 'annoying', 'awful ads', 'so many ads',
-    'expensive', 'suck', 'sucks', 'ugly', 'horrible', 'disaster', 'terrible', 'trouble','mistake',
+    'expensive', 'suck', 'sucks', 'ugly', 'horrible', 'disaster', 'terrible', 'trouble', 'mistake',
     'delay', 'lag', 'slow', 'freeze', 'unresponsive', 'stuck', 'hang', 'load time', 'takes forever',
     'bug', 'glitch', 'crash', 'error', 'not working', "doesn't work", "didn't work", 'fail to load',
     'keeps crashing', 'stopped working', 'broken', 'issue', 'problem', "won't open", 'black screen',
@@ -32,7 +31,7 @@ def detect_complaint(text):
     return int(any(kw in text for kw in complaint_keywords))
 
 # === Judul Aplikasi ===
-st.title("🎵 Aplikasi Analisis Sentimen – Ukulele by Yousician")
+st.title("🎸 Aplikasi Analisis Sentimen – Yousician Learn Guitar")
 
 # === Pilih Mode Input ===
 st.header("📌 Pilih Metode Input")
@@ -88,7 +87,7 @@ if input_mode == "📝 Input Manual":
             st.download_button(
                 label="📅 Unduh Hasil sebagai CSV",
                 data=csv_manual,
-                file_name="hasil_prediksi_manual_ukulele.csv",
+                file_name="hasil_prediksi_manual_yousician_guitar.csv",
                 mime="text/csv"
             )
 
@@ -162,7 +161,7 @@ else:
 
                 ax_bar.set_ylabel("Jumlah")
                 ax_bar.set_xlabel("Sentimen")
-                ax_bar.set_title("Distribusi Sentimen Pengguna – Ukulele by Yousician")
+                ax_bar.set_title("Distribusi Sentimen Pengguna – Yousician Learn Guitar")
                 st.pyplot(fig_bar)
 
                 # === Pie Chart ===
@@ -190,7 +189,7 @@ else:
                 st.download_button(
                     label="📅 Unduh Hasil CSV",
                     data=csv_result,
-                    file_name="hasil_prediksi_ukulele.csv",
+                    file_name="hasil_prediksi_yousician_guitar.csv",
                     mime="text/csv"
                 )
 
